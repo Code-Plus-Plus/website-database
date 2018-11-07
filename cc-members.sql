@@ -8,6 +8,8 @@ CREATE TABLE members
   email VARCHAR(20) NOT NULL,
   title_id INT UNSIGNED DEFAULT 1 NOT NULL,
   FOREIGN KEY (title_id) REFERENCES titles (title_id)
+  FOREIGN KEY (project_id) REFERENCES projects (project_id)
+  FOREIGN KEY (event_id) REFERENCES events (event_id)
 );
 
 /* Table for titles */
@@ -19,14 +21,37 @@ CREATE TABLE titles
   permission_level INT UNSIGNED DEFAULT 1 NOT NULL
 );
 
+/* Table for events */
+CREATE TABLE events
+(
+  event_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (event_id),
+  event_name VARCHAR(20) NOT NULL,
+  event_goal VARCHAR(250) NOT NULL,
+  data VARCHAR(10) DEFAULT '2019-01-01' NOT NULL
+  location VARCHAR(20) NOT NULL,
+  FOREIGN KEY (member_id) REFERENCES members (member_id)
+);
+
+/* Table for Projects */
+CREATE TABLE projects
+(
+  project_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (project_id),
+  project_name VARCHAR(25) NOT NULL,
+  project_goal VARCHAR(250) NOT NULL,
+  start_date VARCHAR(10) DEFAULT '2019-01-01' NOT NULL,
+  finish_date VARCHAR(10) DEFAULT 'Not Finished',
+  FOREIGN KEY (member_id) REFERENCES members (member_id)
+);
+
 /* Create basic titles */
 INSERT INTO titles VALUES(1, 'Member', 1);
-INSERT INTO titles (title_name, permission_level) VALUES ('Ambassador', 10);
-INSERT INTO titles (title_name, permission_level) VALUES ('Secretary', 10);
+INSERT INTO titles (title_name, permission_level) VALUES ('Executive Coordinator', 10);
 INSERT INTO titles (title_name, permission_level) VALUES ('Treasurer', 10);
 INSERT INTO titles (title_name, permission_level) VALUES ('Web Developer', 10);
 INSERT INTO titles (title_name, permission_level) VALUES ('Academic Manager', 10);
-INSERT INTO titles (title_name, permission_level) VALUES ('Community Outreach', 10);
+INSERT INTO titles (title_name, permission_level) VALUES ('Publicist', 10);
 INSERT INTO titles (title_name, permission_level) VALUES ('Vice President', 50);
 INSERT INTO titles (title_name, permission_level) VALUES ('President', 100);
 
@@ -35,3 +60,17 @@ INSERT INTO members VALUES(1, 'Patel', 'Akshay', 'ap95@ieee.org', 9);
 INSERT INTO members VALUES(2, 'Khan', 'Mohammad', 'mo95@ieee.org', 8);
 INSERT INTO members VALUES(3, 'Saballus', 'Tyler', 'sabsmailer@gmail.com', 5);
 INSERT INTO members VALUES(4, 'Pantoja', 'Gonzalo', 'gonzo@gmail.com', 3);
+
+/* Create basic event -----> MIGHT NEED CORRECTIONS*/
+INSERT INTO events VALUES(1, 'Event', 'NIU', NULL, NULL, NULL);
+
+/* Create basic projects */
+INSERT INTO projects VALUES(1, 'Magic Mirror', 'Build responsive mirror', '2018-09-01', NULL);
+INSERT INTO projects VALUES(1, 'Transparent Mirror', 'Build transparent mirror', '2018-09-01', NULL);
+INSERT INTO projects VALUES(1, 'Parking Sensor', 'Build proof of concept of parking detectors for NIU', '2018-10-01', NULL);
+INSERT INTO projects VALUES(1, 'Club Website', 'Build a functinal website for code++', '2018-09-01', NULL);
+INSERT INTO projects VALUES(1, 'iOS App', 'Build an iOS application for code++', '2018-11-06', NULL);
+INSERT INTO projects VALUES(1, 'Android App', 'Build an Android application for code++', '2018-11-06', NULL);
+INSERT INTO projects VALUES(1, 'Underwater Drone', 'Build a AI powered underwater drone', '2019-01-01', NULL);
+INSERT INTO projects VALUES(1, 'AI', 'Learn to build and implement AI software', '2018-11-01', NULL);
+INSERT INTO projects VALUES(1, 'Discord Bots', 'Build and implement Discord Bots to automate the group chat, '2018-11-06', NULL);
