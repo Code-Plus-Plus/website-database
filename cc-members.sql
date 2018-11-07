@@ -30,6 +30,7 @@ CREATE TABLE events
   event_goal VARCHAR(250) NOT NULL,
   data VARCHAR(10) DEFAULT '2019-01-01' NOT NULL
   location VARCHAR(20) NOT NULL,
+  member_id(20) NOT NULL,
   FOREIGN KEY (member_id) REFERENCES members (member_id)
 );
 
@@ -40,9 +41,10 @@ CREATE TABLE projects
   PRIMARY KEY (project_id),
   project_name VARCHAR(25) NOT NULL,
   project_goal VARCHAR(250) NOT NULL,
+  project_leader INT,
   start_date VARCHAR(10) DEFAULT '2019-01-01' NOT NULL,
   finish_date VARCHAR(10) DEFAULT 'Not Finished',
-  FOREIGN KEY (member_id) REFERENCES members (member_id)
+  FOREIGN KEY (project_leader) REFERENCES members (member_id)
 );
 
 /* Create basic titles */
@@ -65,12 +67,4 @@ INSERT INTO members VALUES(4, 'Pantoja', 'Gonzalo', 'gonzo@gmail.com', 3);
 INSERT INTO events VALUES(1, 'Event', 'NIU', NULL, NULL, NULL);
 
 /* Create basic projects */
-INSERT INTO projects VALUES(1, 'Magic Mirror', 'Build responsive mirror', '2018-09-01', NULL);
-INSERT INTO projects VALUES(1, 'Transparent Mirror', 'Build transparent mirror', '2018-09-01', NULL);
-INSERT INTO projects VALUES(1, 'Parking Sensor', 'Build proof of concept of parking detectors for NIU', '2018-10-01', NULL);
-INSERT INTO projects VALUES(1, 'Club Website', 'Build a functinal website for code++', '2018-09-01', NULL);
-INSERT INTO projects VALUES(1, 'iOS App', 'Build an iOS application for code++', '2018-11-06', NULL);
-INSERT INTO projects VALUES(1, 'Android App', 'Build an Android application for code++', '2018-11-06', NULL);
-INSERT INTO projects VALUES(1, 'Underwater Drone', 'Build a AI powered underwater drone', '2019-01-01', NULL);
-INSERT INTO projects VALUES(1, 'AI', 'Learn to build and implement AI software', '2018-11-01', NULL);
-INSERT INTO projects VALUES(1, 'Discord Bots', 'Build and implement Discord Bots to automate the group chat, '2018-11-06', NULL);
+INSERT INTO projects (project_id, project_name, project_goal, start_date, finish_date) VALUES(1, 'Magic Mirror', 'Build responsive mirror', '2018-09-01', NULL);
