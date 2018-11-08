@@ -7,8 +7,8 @@ CREATE TABLE members
   first_name VARCHAR(20) NOT NULL,
   email VARCHAR(20) NOT NULL,
   title_id INT UNSIGNED DEFAULT 1 NOT NULL,
-  FOREIGN KEY (title_id) REFERENCES titles (title_id)
-  FOREIGN KEY (project_id) REFERENCES projects (project_id)
+  FOREIGN KEY (title_id) REFERENCES titles (title_id),
+  FOREIGN KEY (project_id) REFERENCES projects (project_id),
   FOREIGN KEY (event_id) REFERENCES events (event_id)
 );
 
