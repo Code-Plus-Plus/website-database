@@ -58,8 +58,8 @@ INSERT INTO titles (title_name, permission_level) VALUES ('Vice President', 50);
 INSERT INTO titles (title_name, permission_level) VALUES ('President', 100);
 
 /* Create basic members */
-INSERT INTO members VALUES(1, 'Patel', 'Akshay', 'ap95@ieee.org', 9);
-INSERT INTO members VALUES(2, 'Khan', 'Mohammad', 'mo95@ieee.org', 8);
+INSERT INTO members VALUES(1, 'Patel', 'Akshay', 'ap95@ieee.org', 8);
+INSERT INTO members VALUES(2, 'Khan', 'Mohammad', 'mo95@ieee.org', 9);
 INSERT INTO members VALUES(3, 'Saballus', 'Tyler', 'sabsmailer@gmail.com', 5);
 INSERT INTO members VALUES(4, 'Pantoja', 'Gonzalo', 'gonzo@gmail.com', 3);
 
